@@ -9,13 +9,13 @@ STUDENT_ID = 118
 page = requests.get('https://www.championat.com/news/volleyball/1.html')
 tree = html.fromstring(page.content)
 
-links = tree.xpath('//div[@class="news-item__content"]/a[@data-event-action="click_news"]/@href')[:30]
+links = tree.xpath('(//div[@class="news-item__content"]/a[@data-event-action="click_news"]/@href)[position() < 31]')
 URL = 'https://www.championat.com'
 for link in links:
     article_page = requests.get(URL + link)
     article_tree = html.fromstring(article_page.content)
-    title = article_tree.xpath('//div[@id="article_head_title"]/text()')[0]
-    title = title.strip()
+    title = article_tree.xpath('//div[@id="article_head_title"]/text()')
+    title = title[0].strip()
     p_nodes = article_tree.xpath('//div[@id="article_content"]/p')
     content = []
     for p in p_nodes:
