@@ -48,7 +48,7 @@ def handle_request(query):
     word_articles = {}
     query_words = preprocess(query)
     for query_word in query_words:
-        # убираем слово из запроса, если его нету в коллекции
+        # берем только те слова из запроса, которые есть в коллекции
         if term_urls_query(query_word):
             word_articles[query_word] = [term_url['url'] for term_url in term_urls_query(query_word)]
     # cортировка по количеству вхождений
