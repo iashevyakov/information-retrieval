@@ -39,7 +39,7 @@ def cosine_measure(d1_vector, d2_vector):
     return cos_value
 
 
-def handle_request(query):
+def get_docs(query):
     word_articles = {}
     query_words = preprocess(query)
     for query_word in query_words:
@@ -50,7 +50,11 @@ def handle_request(query):
     result = sorted_word_articles[0][1]
     for i in range(1, len(sorted_word_articles)):
         result = union(result, sorted_word_articles[i][1])
-    urls = list(result)
+    return list(result), query_terms
+
+
+def handle_request(query):
+    urls, query_terms = get_docs(query)
     docs = {}
     cos_values = {}
     for url in urls:
