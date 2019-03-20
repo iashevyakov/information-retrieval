@@ -36,8 +36,6 @@ def union(urls1, urls2):
     return set(urls1).union(set(urls2))
 
 
-N = 30
-
 
 def bm25(query_terms, url):
     k_1, b = 1.2, 0.75
