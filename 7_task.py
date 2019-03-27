@@ -90,4 +90,4 @@ def handle_request(query):
         print(url, cos_value, sep=' : ')
 
 
-handle_request("была очень сложная игра")
+handle_request("проиграли на выезде")
