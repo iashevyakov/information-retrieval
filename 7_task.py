@@ -83,7 +83,6 @@ def handle_request(query):
     q_vector = np.dot(np.dot(np.array(q_T_vector), u_k), s_k_inv)
     cos_values = {}
     for i, url in enumerate(urls):
-
         cos_values[url] = cosine_measure(list(q_vector), list(v_T_k[:, i]))
     sorted_articles = dict(sorted(cos_values.items(), key=lambda item: item[1], reverse=True))
     for url, cos_value in list(sorted_articles.items())[:10]:
